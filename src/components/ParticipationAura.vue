@@ -107,10 +107,9 @@ const labelStyle = (i: number) => {
   (i / n) * Math.PI * 2
   - Math.PI / 2
   + labelRotation.value;
-  const r = ringSize.value / 2 + 18;
-  const wobble = (i % 2 === 0 ? 10 : 0) + (n <= 5 ? 12 : 0);
-  const x = Math.cos(angle) * (r + wobble);
-  const y = Math.sin(angle) * (r + wobble);
+  const r = ringSize.value / 2 + 18 + Math.min(40, n * 1.2);
+  const x = Math.cos(angle) * r;
+  const y = Math.sin(angle) * r;
   return {
     transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
     fontSize: n <= 5 ? "14px" : "13px",
