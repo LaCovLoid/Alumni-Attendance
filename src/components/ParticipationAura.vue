@@ -47,6 +47,8 @@ const safeNames = computed(() =>
 const count = computed(() => Math.max(1, safeNames.value.length));
 const maxCount = 45;
 
+const labelRotation = ref(0);
+
 const intensity = computed(() => {
   const t = (count.value - 1) / (maxCount - 1);
   return 0.25 + t * 0.75; // 0.25..1
@@ -101,7 +103,10 @@ const dotStyle = (i: number) => {
 
 const labelStyle = (i: number) => {
   const n = safeNames.value.length || 1;
-  const angle = (i / n) * Math.PI * 2 - Math.PI / 2;
+  const angle =
+  (i / n) * Math.PI * 2
+  - Math.PI / 2
+  + labelRotation.value;
   const r = ringSize.value / 2 + 18;
   const wobble = (i % 2 === 0 ? 10 : 0) + (n <= 5 ? 12 : 0);
   const x = Math.cos(angle) * (r + wobble);
@@ -148,6 +153,8 @@ function resizeCanvas() {
 }
 
 function tick() {
+  labelRotation.value += 0.4;
+
   const canvas = bgCanvas.value;
   const stage = stageEl.value;
   if (!canvas || !stage) return;
@@ -200,6 +207,7 @@ onBeforeUnmount(() => {
 });
 
 watch(count, () => resizeCanvas());
+
 </script>
 
 <style scoped>
