@@ -237,6 +237,8 @@ watch(count, () => resizeCanvas());
 }
 .ring {
   position: absolute;
+  top: 50%;
+  left: 50%;
   border-radius: 999px;
   border-style: solid;
   border-color: rgba(255, 200, 110, 0.65);
