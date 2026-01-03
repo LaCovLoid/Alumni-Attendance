@@ -45,8 +45,11 @@ async function request<T>(url: string, init?: RequestInit): Promise<T> {
 
 export type ParticipantRow = { name: string; createdAt?: string };
 
-export async function apiList(): Promise<{ ok: true; participants: ParticipantRow[] }> {
-  const url = `${API_BASE}?path=list`;
+export async function apiList(
+  force = false
+): Promise<{ ok: true; participants: ParticipantRow[] }> {
+  const ts = force ? `&ts=${Date.now()}` : "";
+  const url = `${API_BASE}?path=list${ts}`;
   return request(url, { method: "GET" });
 }
 

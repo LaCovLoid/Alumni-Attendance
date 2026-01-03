@@ -25,6 +25,7 @@ exports.handler = async (event) => {
     headers: {
       "content-type": upstream.headers.get("content-type") || "application/json",
       "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=30",
     },
     body: text,
   };
