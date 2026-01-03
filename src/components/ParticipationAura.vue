@@ -153,7 +153,7 @@ function resizeCanvas() {
 }
 
 function tick() {
-  labelRotation.value += 0.4;
+  labelRotation.value += 0.0004;
 
   const canvas = bgCanvas.value;
   const stage = stageEl.value;
