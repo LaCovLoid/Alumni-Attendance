@@ -4,7 +4,7 @@
       <h2 class="h2">로그인</h2>
 
       <label class="label">아이디</label>
-      <input class="input" v-model.trim="id" placeholder="예: hds" autocomplete="username" />
+      <input class="input" v-model.trim="id" placeholder="" autocomplete="username" />
 
       <label class="label">비밀번호</label>
       <input
@@ -75,7 +75,7 @@ import { useParticipants } from "@/composables/useParticipants";
 const auth = useAuthStore();
 const { rows, loading, error, refresh } = useParticipants();
 
-const id = ref("hds");
+const id = ref("");
 const pw = ref("");
 const newName = ref("");
 
