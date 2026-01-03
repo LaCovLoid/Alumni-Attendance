@@ -239,7 +239,7 @@ watch(count, () => resizeCanvas());
   border-style: solid;
   border-color: rgba(255, 200, 110, 0.65);
   background: radial-gradient(circle, rgba(0,0,0,0) 55%, rgba(255,200,110,0.06) 100%);
-  animation: rotateSlow 16s linear infinite;
+  animation: rotateSlow 30s linear infinite;
 }
 .orbit-dot {
   position: absolute;
