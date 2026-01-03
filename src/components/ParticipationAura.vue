@@ -9,11 +9,7 @@
       </div>
 
       <div class="emblem" aria-label="emblem">
-        <svg viewBox="0 0 64 64" class="emblem-icon">
-          <path d="M14 16c8-4 14-4 18-2v34c-4-2-10-2-18 2V16z" fill="currentColor" opacity="0.95"/>
-          <path d="M50 16c-8-4-14-4-18-2v34c4-2 10-2 18 2V16z" fill="currentColor" opacity="0.75"/>
-          <path d="M32 16v34" stroke="currentColor" stroke-width="3" opacity="0.6"/>
-        </svg>
+        <img class="emblem-icon" src="@/icons/bps.png" alt="편서" />
       </div>
 
       <div class="labels">
@@ -254,8 +250,8 @@ watch(count, () => resizeCanvas());
   box-shadow: 0 0 14px rgba(255, 200, 110, 0.55);
 }
 .emblem {
-  width: 86px;
-  height: 86px;
+  width: 120px;
+  height: 120px;
   border-radius: 22px;
   background: rgba(255, 200, 110, 0.09);
   border: 1px solid rgba(255, 200, 110, 0.22);
@@ -265,11 +261,17 @@ watch(count, () => resizeCanvas());
   backdrop-filter: blur(8px);
 }
 .emblem-icon {
-  width: 44px;
-  height: 44px;
-  color: rgba(255, 220, 150, 0.95);
-  filter: drop-shadow(0 0 16px rgba(255, 200, 110, 0.35));
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+
+  /* 기존 골드 느낌 유지 */
+  filter:
+    drop-shadow(0 0 16px rgba(255, 200, 110, 0.35))
+    sepia(1) saturate(7) hue-rotate(10deg) brightness(1.05);
+  opacity: 0.95;
 }
+
 .labels { position:absolute; left:50%; top:50%; width:0; height:0; }
 .label {
   position:absolute;

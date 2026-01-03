@@ -2,6 +2,7 @@
   <div class="page">
     <header class="header">
       <h1 class="title">참여 현황</h1>
+      <span class="">IBK 119-174778-01-015 용은희</span>
       <p class="subtitle">
         현재 참여 인원 <b>{{ names.length }}</b>명
       </p>
@@ -41,8 +42,8 @@ const names = computed(() =>
 <style scoped>
 .page { min-height: 100dvh; background:#0b0d14; color:#f2f2f2; display:flex; flex-direction:column; }
 .header { padding: 18px 18px 8px; }
-.title { margin:0; font-size:22px; font-weight:800; letter-spacing:-0.02em; }
-.subtitle { margin:8px 0 0; color:rgba(242,242,242,0.75); font-size:14px; }
+.title { margin:0; margin-bottom:8px; font-size:22px; font-weight:800; letter-spacing:-0.02em; }
+.subtitle { margin-top:2px; color:rgba(242,242,242,0.75); font-size:14px; }
 .main { flex:1; display:flex; flex-direction:column; }
 .status { padding: 8px 18px 14px; font-size:12px; color:rgba(242,242,242,0.65); }
 .err { color: rgba(255, 180, 160, 0.95); }
