@@ -11,6 +11,7 @@ if (!API_BASE) {
 async function request<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, {
     ...init,
+    redirect: "follow",
     headers: {
       "Content-Type": "application/json",
       ...(init?.headers || {}),
