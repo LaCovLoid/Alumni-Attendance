@@ -9,13 +9,16 @@ if (!API_BASE) {
 }
 
 async function request<T>(url: string, init?: RequestInit): Promise<T> {
+  const method = (init?.method ?? "GET").toUpperCase();
+
+  const headers =
+    method === "GET" || method === "HEAD"
+      ? { ...(init?.headers || {}) }
+      : { "Content-Type": "application/json", ...(init?.headers || {}) };
+
   const res = await fetch(url, {
     ...init,
-    redirect: "follow",
-    headers: {
-      "Content-Type": "application/json",
-      ...(init?.headers || {}),
-    },
+    headers,
   });
 
   // Apps Script는 status를 200으로 주는 경우도 있어 payload를 같이 확인
