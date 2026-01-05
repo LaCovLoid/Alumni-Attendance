@@ -104,15 +104,18 @@ const dotStyle = (i: number) => {
 const labelStyle = (i: number) => {
   const n = safeNames.value.length || 1;
   const angle =
-  (i / n) * Math.PI * 2
-  - Math.PI / 2
-  + labelRotation.value;
-  const r = ringSize.value / 2 + 18 + Math.min(40, n * 1.2);
+    (i / n) * Math.PI * 2 - Math.PI / 2 + labelRotation.value;
+
+  const base = ringSize.value / 2 + 18;
+  const shrink = Math.min(34, Math.floor(n / 2));
+  const r = base - shrink;
+
   const x = Math.cos(angle) * r;
   const y = Math.sin(angle) * r;
+
   return {
     transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-    fontSize: n <= 5 ? "14px" : "13px",
+    fontSize: n <= 8 ? "13px" : n <= 18 ? "12px" : "11px",
   } as Record<string, string>;
 };
 
@@ -279,10 +282,11 @@ watch(count, () => resizeCanvas());
   opacity: 0.95;
 }
 
-.labels { position:absolute; left:50%; top:50%; width:0; height:0; }
+.labels { position:absolute; left:50%; top:50%; width:0; height:0; 
+  pointer-events: none; }
 .label {
   position:absolute;
-  padding: 8px 10px;
+  padding: 4px 5px;
   border-radius: 999px;
   border: 1px solid rgba(255, 210, 140, 0.25);
   background: rgba(10, 12, 20, 0.55);
@@ -294,6 +298,9 @@ watch(count, () => resizeCanvas());
   box-shadow: 0 0 16px rgba(255, 200, 110, 0.14), 0 0 40px rgba(255, 200, 110, 0.08);
   backdrop-filter: blur(8px);
   cursor:pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: auto; 
 }
 .toast {
   position: absolute;
